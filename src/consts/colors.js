@@ -1,7 +1,7 @@
-const COLORS = {
+const COLORS  = {
   white: '#fff',
   dark: '#000',
-  primary: '#04555c',
+  primary: '#0195FF',
   secondary: '#e1e8e9',
   light: '#f9f9f9',
   grey: '#dddedd',

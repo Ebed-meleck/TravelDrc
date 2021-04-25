@@ -7,22 +7,22 @@ import COLORS from '../../consts/colors'
 import ListCategory from '../../components/ListCategory';
 
 const HomeScreen = () => {
-  return (<SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}  >
+  return (<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}  >
     <StatusBar translucent={false} backgroundColor={COLORS.primary} />
     <View style={styles.header}>
       <Icon name="sort" size={28} color={COLORS.white} />
-      <Icon  name='notifications' size={28} color={COLORS.white} />
+      <Icon name='notifications' size={28} color={COLORS.white} />
     </View>
     <ScrollView
-    showsVerticalScrollIndicator={false} 
+      showsVerticalScrollIndicator={false}
     >
       <View style={styles.scroll} >
         <View>
-         <Text style={styles.headerTitle}>
-          Explorer 
-        </Text>
-        <Text style={styles.headerTitle}>
-          les meilleurs endroits
+          <Text style={styles.headerTitle}>
+            Explorer
+          </Text>
+          <Text style={styles.headerTitle}>
+            les meilleurs endroits
           </Text>
           <View style={styles.inputContainer}>
             <Icon name='search' size={28} />
@@ -31,8 +31,10 @@ const HomeScreen = () => {
         </View>
       </View>
       <ListCategory />
+      <Text style={styles.sectionTitle} >Places</Text>
     </ScrollView>
-  </SafeAreaView>)
+  </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -64,7 +66,17 @@ const styles = StyleSheet.create({
     top: 90,
     paddingHorizontal: 20,
     alignItems: 'center',
-
+    elevation: 2,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowColor:COLORS.grey
+  },
+  sectionTitle: {
+    marginHorizontal: 20,
+    marginVertical: 20,
+    fontWeight: 'bold',
+    fontSize: 20,
   }
 });
 
