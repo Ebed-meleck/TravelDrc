@@ -1,14 +1,23 @@
 
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, View, StatusBar , ScrollView, Text} from 'react-native';
+import { SafeAreaView, StyleSheet, View,FlatList  , StatusBar , Dimensions , ScrollView, Platform ,Text} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import COLORS from '../../consts/colors'
+import Place from '../../consts/place';
 import ListCategory from '../../components/ListCategory';
+import Cards from '../../components/Cards';
+import Recommended from '../../components/RecommendeCard';
 
-const HomeScreen = () => {
-  return (<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}  >
-    <StatusBar translucent={false} backgroundColor={COLORS.primary} />
+const {width} = Dimensions.get('screen')
+
+const HomeScreen = ({navigation}) => {
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}  >
+      <StatusBar translucent={false} backgroundColor={COLORS.primary} />
+      {Platform === 'ios' ? (
+        <StatusBar style={{backgroundColor:'red'}} />
+      ):null }
     <View style={styles.header}>
       <Icon name="sort" size={28} color={COLORS.white} />
       <Icon name='notifications' size={28} color={COLORS.white} />
@@ -31,7 +40,27 @@ const HomeScreen = () => {
         </View>
       </View>
       <ListCategory />
-      <Text style={styles.sectionTitle} >Places</Text>
+        <Text style={styles.sectionTitle} >Places</Text>
+        <View>
+          <FlatList
+            contentContainerStyle={{paddingLeft:20}}
+            data={Place}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item }) => <Cards place={item} navigation={navigation} />}
+          />
+          <Text style={styles.sectionTitle} >Recommended</Text>
+          <FlatList
+            snapToInterval={ 20}
+            contentContainerStyle={{ paddingLeft: 20, paddingBottom:20 }}
+            data={Place}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item})=> <Recommended place={item} navigation={navigation} />}
+          />
+        </View>
+        
+       
     </ScrollView>
   </SafeAreaView>
   );
