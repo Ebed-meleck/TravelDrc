@@ -26,7 +26,7 @@ const OnBoardScreen = ({ navigation }) => {
         </Text>
         <TouchableOpacity activeOpacity={0.8}
         
-          onPress={() => navigation.navigate('HomeScreen')}
+          onPress={() => navigation.navigate('start')}
           
         >
           <View style={styles.btn}>

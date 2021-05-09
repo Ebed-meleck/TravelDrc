@@ -1,6 +1,18 @@
 
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, View,FlatList  , StatusBar , Dimensions , ScrollView, Platform ,Text} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  FlatList,
+  StatusBar,
+  Dimensions,
+  ScrollView,
+  Platform,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight
+} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import COLORS from '../../consts/colors'
@@ -8,22 +20,32 @@ import Place from '../../consts/place';
 import ListCategory from '../../components/ListCategory';
 import Cards from '../../components/Cards';
 import Recommended from '../../components/RecommendeCard';
+import Header from '../../components/Header';
+import MainDrawer from '../../Navigation/Drawer';
+import { color } from 'ansi-styles';
 
 const {width} = Dimensions.get('screen')
 
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}  >
+    <View style={{ flex: 1, backgroundColor: COLORS.white }}  >
       <StatusBar translucent={false} backgroundColor={COLORS.primary} />
-      {Platform === 'ios' ? (
-        <StatusBar style={{backgroundColor:'red'}} />
-      ):null }
-    <View style={styles.header}>
-      <Icon name="sort" size={28} color={COLORS.white} />
-      <Icon name='notifications' size={28} color={COLORS.white} />
+      <Header />
+      <View style={styles.header}>
+        <TouchableHighlight  activeOpacity={0.5} >
+           <Icon name="sort" size={28} color={COLORS.white}
+        onPress={()=>  navigation.openDrawer() }
+        />
+        </TouchableHighlight>
+       
+        <Icon name='notifications' size={28} 
+      
+          />
     </View>
     <ScrollView
-      showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        bounces={true}
+        automaticallyAdjustContentInsets={true}
     >
       <View style={styles.scroll} >
         <View>
@@ -45,15 +67,17 @@ const HomeScreen = ({navigation}) => {
           <FlatList
             contentContainerStyle={{paddingLeft:20}}
             data={Place}
+            keyExtractor={item=>item.id.toString()}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => <Cards place={item} navigation={navigation} />}
           />
-          <Text style={styles.sectionTitle} >Recommended</Text>
+          <Text style={styles.sectionTitle} >Recommender</Text>
           <FlatList
             snapToInterval={ 20}
             contentContainerStyle={{ paddingLeft: 20, paddingBottom:20 }}
             data={Place}
+            keyExtractor={item=>item.id.toString()}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({item})=> <Recommended place={item} navigation={navigation} />}
@@ -62,7 +86,7 @@ const HomeScreen = ({navigation}) => {
         
        
     </ScrollView>
-  </SafeAreaView>
+  </View>
   );
 };
 
@@ -106,6 +130,9 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     fontWeight: 'bold',
     fontSize: 20,
+  },
+  notif: {
+    color:COLORS.white
   }
 });
 

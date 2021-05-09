@@ -9,9 +9,9 @@ const Place = [
   },
   {
     id:2,
-    name: 'Plage',
-    location: 'Moanda',
-    image: require('../assets/moanda2.jpg'),
+    name: 'chute de virunga',
+    location: 'Est',
+    image: require('../assets/Virunga_01.jpg'),
     detail: 'Lorem ipsumlorem ipsum dolor sit amet consectetur adipiscing eliorem ipsum dolor sit amet consectetur adipiscing elit',
   
   },
@@ -19,15 +19,15 @@ const Place = [
     id:3,
     name: 'Plage',
     location: 'Moanda',
-    image: require('../assets/moanda2.jpg'),
+    image: require('../assets/moanda.jpg'),
     detail: 'Lorem ipsumlorem ipsum dolor sit amet consectetur adipiscing eliorem ipsum dolor sit amet consectetur adipiscing elit',
   
   },
   {
     id:4,
-    name: 'Plage',
-    location: 'Moanda',
-    image: require('../assets/moanda2.jpg'),
+    name: 'ile de goma',
+    location: 'Goma',
+    image: require('../assets/goma_ile.jpg'),
     detail: 'Lorem ipsumlorem ipsum dolor sit amet consectetur adipiscing eliorem ipsum dolor sit amet consectetur adipiscing elit',
   
   },

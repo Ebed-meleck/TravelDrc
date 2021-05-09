@@ -2,13 +2,16 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, View , Text, StatusBar, ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
+import Header from '../../components/Header';
+
 
 const DetailsScreen = ({ navigation, route }) => {
   const place = route.params;
   console.log(place)
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:COLORS.white}} >
+    <View style={{flex:1, backgroundColor:COLORS.white}} >
       <StatusBar translucent backgroundColor='rgba(0,0,0,0.2)' />
+      <Header />
       <ImageBackground
         style={{ flex: 0.7 }}
         source={place.image}
@@ -56,17 +59,17 @@ const DetailsScreen = ({ navigation, route }) => {
       <View style={styles.footer}>
         <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }} >
           <Text style={{ fontSize: 18, fontWeight: 'bold', color: COLORS.white }}>
-            $100
+            $3
           </Text>
           <Text style={{ fontSize: 18, fontWeight: 'bold', color: COLORS.white }}>
-            /PER DAY
+            /PAR JOUR
           </Text>
         </View>
         <View style={styles.BookNw}>
-        <Text style={{fontSize:16, fontWeight:'bold', color:COLORS.primary}} > Book Now </Text>
+        <Text style={{fontSize:16, fontWeight:'bold', color:COLORS.primary}} > Reservation </Text>
         </View>
       </View>
-  </SafeAreaView>
+  </View>
   )
 }
 

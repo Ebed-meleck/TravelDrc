@@ -7,12 +7,6 @@ import CategoriesIcon from './CategorieIcon';
 
 const ListCategory = () => {
   
-  /*const categoriesIcon = [
-    < Icon name='flight' size={28} color={COLORS.primary} />,
-    <Icon name='beach-access' size={28} color={COLORS.primary} />,
-    <Icon name='near-me' size={28} color={COLORS.primary} />,
-    <Icon name="place" size={28} color={COLORS.primary} />,
-  ];*/
 
   return (
     <View style={styles.categoryContainer} >
