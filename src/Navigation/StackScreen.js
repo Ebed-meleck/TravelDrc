@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 
 const MainStack = () => {
   return (
-    <NavigationContainer >
+   
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName='onBoardScreen' >
@@ -23,7 +23,7 @@ const MainStack = () => {
           component={MainDrawer}
         />
       </Stack.Navigator>
-    </NavigationContainer>
+  
   );
 }
 export default MainStack;

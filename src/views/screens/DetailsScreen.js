@@ -1,13 +1,62 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View , Text, StatusBar, ImageBackground} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  StatusBar,
+  ImageBackground,
+  Share,
+  Platform,
+  TouchableOpacity,
+  Image
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import Header from '../../components/Header';
 
 
+
+const SharePlace = ({place}) => {
+const _sharePlace = () => {
+  Share.share({ title: place.name, message:  `${place.location + ' ' +  'description: ' + place.detail }`});
+}
+
+  if (Platform.OS === 'ios') {
+      const iosShare = require('../../assets/ic_share.ios.png')
+    return (
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={styles.share_float}
+        onPress={() => { _sharePlace() }}
+      >
+        <Image
+          source={ require('../../assets/ic_share.ios.png')}
+          style={styles.share_image}
+        />
+     </TouchableOpacity>
+    )
+  } else if(Platform.OS === 'android') {
+    const androisShare = require('../../assets/ic_share.android.png');
+    return (
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={styles.share_float}
+        onPress={() => { _sharePlace() }}
+      >
+        <Image
+          source={require('../../assets/ic_share.android.png')}
+          style={styles.share_image}
+        />
+     </TouchableOpacity>
+    )
+  }
+}
+
+
 const DetailsScreen = ({ navigation, route }) => {
   const place = route.params;
-  console.log(place)
+
   return (
     <View style={{flex:1, backgroundColor:COLORS.white}} >
       <StatusBar translucent backgroundColor='rgba(0,0,0,0.2)' />
@@ -23,11 +72,7 @@ const DetailsScreen = ({ navigation, route }) => {
             color={COLORS.white}
             onPress={navigation.goBack}
           />
-          <Icon
-            name='more-vert'
-            size={28}
-            color={COLORS.white}
-          />
+         
         </View>
         <View style={styles.imageDetails} >
           <Text
@@ -49,6 +94,7 @@ const DetailsScreen = ({ navigation, route }) => {
         <View style={styles.iconContainer} >
           <Icon name='favorite'  size={30} color={COLORS.red} />
         </View>
+        {SharePlace({place})}
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Icon name='place' size={28} color={COLORS.primary} />
           <Text style={{ fontSize:20, fontWeight:'bold', color:COLORS.primary }} >{ place.location }</Text>
@@ -65,9 +111,12 @@ const DetailsScreen = ({ navigation, route }) => {
             /PAR JOUR
           </Text>
         </View>
-        <View style={styles.BookNw}>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() => alert('merci de faire une reservation')}
+          style={styles.BookNw}>
         <Text style={{fontSize:16, fontWeight:'bold', color:COLORS.primary}} > Reservation </Text>
-        </View>
+        </TouchableOpacity>
       </View>
   </View>
   )
@@ -130,7 +179,27 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems:'center',
-  }
+  },
+  share_float: {
+    position: "absolute",
+    width: 60,
+    height: 60,
+    right: 100,
+    top: -30,
+    borderRadius: 30,
+     elevation: 2,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowColor: COLORS.grey,
+    backgroundColor: COLORS.white,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  share_image: {
+    width: 30,
+    height: 30,
+  },
 });
 
 export default DetailsScreen;

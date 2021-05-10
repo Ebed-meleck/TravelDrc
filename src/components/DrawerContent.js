@@ -1,18 +1,17 @@
-import * as React from 'react';
+import  React,{useState, useContext} from 'react';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import {View, StyleSheet} from 'react-native';
 import {
   Avatar,
   Title,
-  Caption,
-  Paragraph,
   Drawer,
   TouchableRipple,
   Switch,
   Text
 } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import { useTheme } from '@react-navigation/native';
+import { AuthContext } from './context';
 
 
 
@@ -21,6 +20,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const DrawerContent = (props) => {
 
+  //const paperTheme = useTheme();
+  //const { toggleTheme } = useContext(AuthContext);
 
   return (
     <View style={{flex:1}} >
@@ -38,33 +39,47 @@ const DrawerContent = (props) => {
             </View>
           </View>
           <Drawer.Section  style={styles.drawerSection}>
-            <DrawerItem
-              icon={({ color, size }) => {
-                <Icon
-                  name='home-outline'
-                  color={color}
-                  size={size} 
-                />
-              }}
+            <Drawer.Item
+              icon='home-outline'
               label='Acceuil'
               onPress={()=>{ props.navigation.navigate('home') }}
             />
 
-            <DrawerItem
-              icon={({ color, size }) => {
-                <Icon
-                  name='start'
-                  color={color}
-                  size={size}
-                />
-              }}
+            <Drawer.Item
+              icon='star-outline'
               label='Mes favoris'
               onPress={()=>{ props.navigation.navigate('favoris')}}
             />
+            <Drawer.Item
+              icon='bookmark-multiple-outline'
+              label='Enregistrement'
+              onPress={()=>{}}
+            />
+            <Drawer.Item
+              icon='account-check-outline'
+              label='Support'
+              onPress={()=>{}}
+            />
             </Drawer.Section>
-
+          <Drawer.Section title='Preferences' disabled  >
+            <TouchableRipple onPress={() => { }}>
+              <View style={styles.preferences}>
+                <View pointerEvents='none' >
+                  <Text>Dark theme</Text>
+                </View>
+                <Switch  />
+              </View>
+              
+                </TouchableRipple>
+              </Drawer.Section>
         </View>
       </DrawerContentScrollView>
+      <Drawer.Section style={styles.bottomDrawerSection} >
+            <Drawer.Item
+              icon='application'
+              label='Version 0.1.1'
+            />
+            </Drawer.Section>
     </View>
   )
 }
@@ -81,7 +96,17 @@ const styles = StyleSheet.create({
   },
   drawerSection: {
     marginTop: 15,
-  }
+  },
+     bottomDrawerSection: {
+        marginBottom: 15,
+        borderTopColor: '#f4f4f4',
+        borderTopWidth: 1
+  },
+  preferences: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+     }
 });
 
 export default DrawerContent;
