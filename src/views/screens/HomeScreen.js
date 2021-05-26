@@ -11,7 +11,8 @@ import {
   Platform,
   Text,
   TouchableOpacity,
-  TouchableHighlight
+  TouchableHighlight,
+  Vir
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -21,7 +22,7 @@ import ListCategory from '../../components/ListCategory';
 import Cards from '../../components/Cards';
 import Recommended from '../../components/RecommendeCard';
 import Header from '../../components/Header';
-import MainDrawer from '../../Navigation/Drawer';
+
 import { color } from 'ansi-styles';
 
 const {width} = Dimensions.get('screen')
@@ -32,15 +33,13 @@ const HomeScreen = ({navigation}) => {
       <StatusBar translucent={false} backgroundColor={COLORS.primary} />
       <Header />
       <View style={styles.header}>
-        <TouchableHighlight  activeOpacity={0.5} >
-           <Icon name="sort" size={28} color={COLORS.white}
+        <TouchableHighlight activeOpacity={0.5}
         onPress={()=>  navigation.openDrawer() }
+        >
+           <Icon name="sort" size={28} color={COLORS.white}
         />
         </TouchableHighlight>
-       
-        <Icon name='notifications' size={28} 
-      
-          />
+          
     </View>
     <ScrollView
         showsVerticalScrollIndicator={false}
@@ -65,6 +64,7 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.sectionTitle} >Places</Text>
         <View>
           <FlatList
+            ListFooterComponent
             contentContainerStyle={{paddingLeft:20}}
             data={Place}
             keyExtractor={item=>item.id.toString()}
@@ -82,9 +82,7 @@ const HomeScreen = ({navigation}) => {
             showsHorizontalScrollIndicator={false}
             renderItem={({item})=> <Recommended place={item} navigation={navigation} />}
           />
-        </View>
-        
-       
+        </View>   
     </ScrollView>
   </View>
   );

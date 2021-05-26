@@ -6,18 +6,13 @@ import CategoriesIcon from './CategorieIcon';
 
 
 const ListCategory = () => {
-  
-
-  return (
+    return (
     <View style={styles.categoryContainer} >
       <CategoriesIcon />
     </View>
-     
-      
-   
   );
-    
 };
+
 const styles = StyleSheet.create({
   categoryContainer: {
     marginTop: 60,

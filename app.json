@@ -14,17 +14,20 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "userInterfaceStyle":"automatic"
+      "userInterfaceStyle": "automatic",
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "package": "com.ebedmeleck.travelDrc",
+        "adaptiveIcon": {
+          "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+        },
+        "versionCode": 1 
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

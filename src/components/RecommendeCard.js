@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity , ImageBackground, Dimensions} from 'react-native';
 import COLORS from '../consts/colors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -6,12 +6,11 @@ import { PureComponent } from 'react';
 
 const { width } = Dimensions.get('screen');
 
-class Recommended extends PureComponent {
-  render() {
-    const place = this.props.place;
+const RecommendedCompenent  = ({place, navigation})=>{
+ 
   
     return (
-      <TouchableOpacity activeOpacity={0.8} onPress={() => this.props.navigation.navigate('DetailsScreen', place)} >
+      <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('DetailsScreen', place)} >
         <ImageBackground
           style={styles.container}
           source={place.image}
@@ -34,7 +33,7 @@ class Recommended extends PureComponent {
       </TouchableOpacity>
     );
   }
-}
+const Recommended = React.memo(RecommendedCompenent);
 
 const styles = StyleSheet.create({
   container: {

@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const { width } = Dimensions.get('screen');
 
-const Cards = ({ place, navigation }) => {
+const CardsComponent = ({ place, navigation }) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('DetailsScreen', place)}  >
       <ImageBackground style={styles.cardImage}
@@ -28,6 +28,7 @@ const Cards = ({ place, navigation }) => {
   );
 }
 
+const Cards = React.memo(CardsComponent);
 
 
 const styles = StyleSheet.create({
@@ -56,4 +57,4 @@ const styles = StyleSheet.create({
 
 });
 
-module.exports = Cards;
+export default Cards;

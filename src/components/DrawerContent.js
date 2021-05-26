@@ -48,17 +48,17 @@ const DrawerContent = (props) => {
             <Drawer.Item
               icon='star-outline'
               label='Mes favoris'
-              onPress={()=>{ props.navigation.navigate('favoris')}}
+              onPress={()=>{ alert('Dans le prochain jour sa sera disponible')}}
             />
             <Drawer.Item
               icon='bookmark-multiple-outline'
               label='Enregistrement'
-              onPress={()=>{}}
+              onPress={()=>{alert('Dans le prochain jour sa sera disponible')}}
             />
             <Drawer.Item
               icon='account-check-outline'
               label='Support'
-              onPress={()=>{}}
+              onPress={()=>{  alert('Dans le prochain jour sa sera disponible') }}
             />
             </Drawer.Section>
           <Drawer.Section title='Preferences' disabled  >
@@ -77,7 +77,7 @@ const DrawerContent = (props) => {
       <Drawer.Section style={styles.bottomDrawerSection} >
             <Drawer.Item
               icon='application'
-              label='Version 0.1.1'
+              label='Version 1.0.0'
             />
             </Drawer.Section>
     </View>
