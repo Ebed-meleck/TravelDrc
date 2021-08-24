@@ -3,27 +3,23 @@ import { View  , StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../consts/colors';
 
-const CategoriesIcon = () => {
+function CategoriesIcon () {
     
-  return (<View style={styles.container}>
-   
-    <View style={styles.iconContainer}>
-      <Icon name='flight' size={28} color={COLORS.primary}  />
+  return (
+    <View style={styles.container}>
+      <View style={styles.iconContainer}>
+        <Icon name='flight' size={28} color={COLORS.primary} />
+      </View>
+      <View style={styles.iconContainer}>
+        <Icon name='beach-access' size={28} color={COLORS.primary} />
+      </View>
+      <View style={styles.iconContainer}>
+        <Icon name='near-me' size={28} color={COLORS.primary} />
+      </View>
+      <View style={styles.iconContainer}>
+        <Icon name="place" size={28} color={COLORS.primary} />
+      </View>
     </View>
-    
-    <View style={styles.iconContainer}>
-          <Icon name='beach-access' size={28} color={COLORS.primary} />
-
-    </View>
-    <View style={styles.iconContainer}>
-          <Icon name='near-me' size={28} color={COLORS.primary} />
-
-    </View>
-    <View style={styles.iconContainer}>
-          <Icon name="place" size={28} color={COLORS.primary} />
-
-    </View>
-  </View>
   );
     
 }
@@ -46,4 +42,4 @@ const styles = StyleSheet.create({
   }
 })
   
-export default CategoriesIcon
+export default CategoriesIcon;

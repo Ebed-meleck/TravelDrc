@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import COLORS from '../consts/colors';
 import CategoriesIcon from './CategorieIcon';
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  SafeAreaView,
+  //SafeAreaView,
   StyleSheet,
   View,
   Text,
@@ -17,44 +17,45 @@ import Header from '../../components/Header';
 
 
 
-const SharePlace = ({place}) => {
-const _sharePlace = () => {
-  Share.share({ title: place.name, message:  `${place.location + ' ' +  'description: ' + place.detail }`});
-}
 
-  if (Platform.OS === 'ios') {
-      const iosShare = require('../../assets/ic_share.ios.png')
-    return (
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.share_float}
-        onPress={() => { _sharePlace() }}
-      >
-        <Image
-          source={ require('../../assets/ic_share.ios.png')}
-          style={styles.share_image}
-        />
-     </TouchableOpacity>
-    )
-  } else if(Platform.OS === 'android') {
-    const androisShare = require('../../assets/ic_share.android.png');
-    return (
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.share_float}
-        onPress={() => { _sharePlace() }}
-      >
-        <Image
-          source={require('../../assets/ic_share.android.png')}
-          style={styles.share_image}
-        />
-     </TouchableOpacity>
-    )
-  }
+const SharePlace = ({ place }) => {
+      
+    const _sharePlace = () => {
+      Share.share({ title: place.name, message:  `${place.location + ' ' +  'description: ' + place.detail }`});
+    }
+
+      if (Platform.OS === 'ios') {
+        return (
+          <TouchableOpacity
+            activeOpacity={0.5}
+            style={styles.share_float}
+            onPress={() => { _sharePlace() }}
+          >
+            <Image
+              source={ require('../../assets/ic_share.ios.png')}
+              style={styles.share_image}
+            />
+        </TouchableOpacity>
+        );
+      } else if(Platform.OS === 'android') {
+        return (
+          <TouchableOpacity
+            activeOpacity={0.5}
+            style={styles.share_float}
+            onPress={() => { _sharePlace() }}
+          >
+            <Image
+              source={require('../../assets/ic_share.android.png')}
+              style={styles.share_image}
+            />
+        </TouchableOpacity>
+        );
+      }
 }
 
 
 const DetailsScreen = ({ navigation, route }) => {
+  
   const place = route.params;
 
   return (
@@ -119,7 +120,7 @@ const DetailsScreen = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
   </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -201,5 +202,8 @@ const styles = StyleSheet.create({
     height: 30,
   },
 });
+
+
+
 
 export default DetailsScreen;

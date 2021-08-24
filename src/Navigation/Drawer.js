@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+//import { NavigationContainer } from '@react-navigation/native';
 import DrawerContent from '../components/DrawerContent'
 import HomeScreen from '../views/screens/HomeScreen';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -32,11 +31,10 @@ const MainDrawer = () => {
    
       <Drawer.Navigator
         initialRouteName='home'
-      screenOptions={{}}
-      drawerContent={props=> <DrawerContent {...props} />}
+        drawerContent={props=> <DrawerContent {...props} />}
       >
-      <Drawer.Screen name='home' component={HomeStack} />
-      <Drawer.Screen name='favoris' component={FavorisList} />
+        <Drawer.Screen name='home' component={HomeStack} />
+        <Drawer.Screen name='favoris' component={FavorisList} />
       </Drawer.Navigator>
    
   );

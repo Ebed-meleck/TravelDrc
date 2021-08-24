@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  SafeAreaView,
+  //SafeAreaView,
   StyleSheet,
   View,
   ImageBackground,
@@ -25,12 +25,10 @@ const OnBoardScreen = ({ navigation }) => {
         lorem ipsum dolor sit amet consectetur adipiscing elit
         </Text>
         <TouchableOpacity activeOpacity={0.8}
-        
           onPress={() => navigation.navigate('start')}
-          
         >
           <View style={styles.btn}>
-            <Text style={styles.btn_text} >Commencer</Text>
+            <Text style={styles.btn_text} >Get started</Text>
           </View>
         </TouchableOpacity>
       </View>

@@ -12,7 +12,7 @@ import {
   Text,
   TouchableOpacity,
   TouchableHighlight,
-  Vir
+  VirtualizedList
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -23,70 +23,74 @@ import Cards from '../../components/Cards';
 import Recommended from '../../components/RecommendeCard';
 import Header from '../../components/Header';
 
-import { color } from 'ansi-styles';
 
-const {width} = Dimensions.get('screen')
 
-const HomeScreen = ({navigation}) => {
-  return (
-    <View style={{ flex: 1, backgroundColor: COLORS.white }}  >
-      <StatusBar translucent={false} backgroundColor={COLORS.primary} />
-      <Header />
-      <View style={styles.header}>
-        <TouchableHighlight activeOpacity={0.5}
-        onPress={()=>  navigation.openDrawer() }
-        >
-           <Icon name="sort" size={28} color={COLORS.white}
-        />
-        </TouchableHighlight>
+const { width } = Dimensions.get('screen');
+ 
+function HomeScreen ({navigation}) {
+  
+    const getItemCount = (data) => 6;
+   
+
+    return (
+      <View style={{ flex: 1, backgroundColor: COLORS.white }}  >
+        <StatusBar translucent={false} backgroundColor={COLORS.primary} />
+        <Header />
+        <View style={styles.header}>
+          <TouchableHighlight activeOpacity={0.5}
+            onPress={() => navigation.openDrawer()}
+          >
+            <Icon name="sort" size={28} color={COLORS.white}
+            />
+          </TouchableHighlight>
           
-    </View>
-    <ScrollView
-        showsVerticalScrollIndicator={false}
-        bounces={true}
-        automaticallyAdjustContentInsets={true}
-    >
-      <View style={styles.scroll} >
-        <View>
-          <Text style={styles.headerTitle}>
-            Explorer
-          </Text>
-          <Text style={styles.headerTitle}>
-            les meilleurs endroits
-          </Text>
-          <View style={styles.inputContainer}>
-            <Icon name='search' size={28} />
-            <TextInput placeholder="rechercher l'endroit" style={COLORS.grey} />
-          </View>
         </View>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          bounces={true}
+          automaticallyAdjustContentInsets={true}
+        >
+          <View style={styles.scroll} >
+            <View>
+              <Text style={styles.headerTitle}>
+                Explorer
+              </Text>
+              <Text style={styles.headerTitle}>
+                les meilleurs endroits
+              </Text>
+              <View style={styles.inputContainer}>
+                <Icon name='search' size={28} />
+                <TextInput placeholder="rechercher l'endroit" style={COLORS.grey} />
+              </View>
+            </View>
+          </View>
+          <ListCategory />
+          <Text style={styles.sectionTitle} >Places</Text>
+          <View>
+            <FlatList
+              data={Place}
+              contentContainerStyle={{ paddingLeft: 20 }}
+              keyExtractor={item => item.id.toString()}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => <Cards place={item} navigation={navigation} />}
+          
+            />
+            <Text style={styles.sectionTitle} >Recommended</Text>
+            <FlatList
+              snapToInterval={20}
+              contentContainerStyle={{ paddingLeft: 20, paddingBottom: 20 }}
+              data={Place}
+              keyExtractor={item => item.id.toString()}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => <Recommended place={item} navigation={navigation} />}
+            />
+          </View>
+        </ScrollView>
       </View>
-      <ListCategory />
-        <Text style={styles.sectionTitle} >Places</Text>
-        <View>
-          <FlatList
-            ListFooterComponent
-            contentContainerStyle={{paddingLeft:20}}
-            data={Place}
-            keyExtractor={item=>item.id.toString()}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => <Cards place={item} navigation={navigation} />}
-          />
-          <Text style={styles.sectionTitle} >Recommender</Text>
-          <FlatList
-            snapToInterval={ 20}
-            contentContainerStyle={{ paddingLeft: 20, paddingBottom:20 }}
-            data={Place}
-            keyExtractor={item=>item.id.toString()}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({item})=> <Recommended place={item} navigation={navigation} />}
-          />
-        </View>   
-    </ScrollView>
-  </View>
-  );
-};
+    );
+}
 
 const styles = StyleSheet.create({
   header: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Appbar } from "react-native-paper";
-import { StyleSheet, View , Platform, ImageBackground} from 'react-native';
+import { StyleSheet , Platform} from 'react-native';
 import COLORS from '../consts/colors'
 
 

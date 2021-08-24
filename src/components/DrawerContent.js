@@ -1,5 +1,5 @@
-import  React,{useState, useContext} from 'react';
-import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
+import  React from 'react';
+import {  DrawerContentScrollView } from '@react-navigation/drawer';
 import {View, StyleSheet} from 'react-native';
 import {
   Avatar,
@@ -8,10 +8,8 @@ import {
   TouchableRipple,
   Switch,
   Text
-} from 'react-native-paper'
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useTheme } from '@react-navigation/native';
-import { AuthContext } from './context';
+} from 'react-native-paper';
+
 
 
 
@@ -20,8 +18,6 @@ import { AuthContext } from './context';
 
 const DrawerContent = (props) => {
 
-  //const paperTheme = useTheme();
-  //const { toggleTheme } = useContext(AuthContext);
 
   return (
     <View style={{flex:1}} >
@@ -69,7 +65,6 @@ const DrawerContent = (props) => {
                 </View>
                 <Switch  />
               </View>
-              
                 </TouchableRipple>
               </Drawer.Section>
         </View>

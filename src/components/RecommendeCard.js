@@ -6,9 +6,15 @@ import { PureComponent } from 'react';
 
 const { width } = Dimensions.get('screen');
 
-const RecommendedCompenent  = ({place, navigation})=>{
+class Recommended extends React.PureComponent {
  
-  
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const place = this.props.place;
+    const navigation = this.props.navigation;
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('DetailsScreen', place)} >
         <ImageBackground
@@ -33,7 +39,8 @@ const RecommendedCompenent  = ({place, navigation})=>{
       </TouchableOpacity>
     );
   }
-const Recommended = React.memo(RecommendedCompenent);
+  }
+//const Recommended = React.memo(RecommendedCompenent);
 
 const styles = StyleSheet.create({
   container: {

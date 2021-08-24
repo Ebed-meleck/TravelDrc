@@ -5,30 +5,45 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const { width } = Dimensions.get('screen');
 
-const CardsComponent = ({ place, navigation }) => {
-  return (
-    <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('DetailsScreen', place)}  >
-      <ImageBackground style={styles.cardImage}
-        source={place.image}
-      >
-        <Text style={styles.text_Name} > {place.name} </Text>
-        <View style={styles.text_Location}>
-          <View style={{ flexDirection: 'row' }}>
-            <Icon name='place' size={20} color={COLORS.white} />
-            <Text style={{ marginLeft: 3, color: COLORS.white }} > {place.location} </Text>
+class Cards extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.place !== this.props.place;
+  }
+
+  render() {
+    const place = this.props.place;
+    const navigation = this.props.navigation;
+
+    return (
+      <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('DetailsScreen', place)}  >
+        <ImageBackground style={styles.cardImage}
+          source={place.image}
+        >
+          <Text style={styles.text_Name} > {place.name} </Text>
+          <View style={styles.text_Location}>
+            <View style={{ flexDirection: 'row' }}>
+              <Icon name='place' size={20} color={COLORS.white} />
+              <Text style={{ marginLeft: 3, color: COLORS.white }} > {place.location} </Text>
+            </View>
+            <View style={{ flexDirection: 'row', marginLeft: 3 }}>
+              <Icon name='star' size={20} color={COLORS.white} />
+              <Text style={{ marginLeft: 3, color: COLORS.white }} > 5.0 </Text>
+            </View>
           </View>
-          <View style={{ flexDirection: 'row', marginLeft: 3 }}>
-            <Icon name='star' size={20} color={COLORS.white} />
-            <Text style={{ marginLeft: 3, color: COLORS.white }} > 5.0 </Text>
-          </View>
-        </View>
-      </ImageBackground>
-    </TouchableOpacity>
+        </ImageBackground>
+      </TouchableOpacity>
  
-  );
+    );
+  }
 }
 
-const Cards = React.memo(CardsComponent);
+//const Cards = React.memo(CardsComponent);
 
 
 const styles = StyleSheet.create({
