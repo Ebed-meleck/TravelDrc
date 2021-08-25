@@ -9,6 +9,6 @@ npm-debug.*
 *.orig.*
 web-build/
 .vscode
-
+yarn-err.log
 # macOS
 .DS_Store
