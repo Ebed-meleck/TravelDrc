@@ -14,9 +14,10 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import Header from '../../components/Header';
-
-
-
+import { connect } from 'react-redux';
+import { _actionFavorite } from '../../store/action/favorite.action';
+import EnlargeShink from '../../Animation/EnlargeShink';
+import { TOGGLE_FAVORITE } from '../../store/types/types';
 
 const SharePlace = ({ place }) => {
       
@@ -54,9 +55,34 @@ const SharePlace = ({ place }) => {
 }
 
 
-const DetailsScreen = ({ navigation, route }) => {
+
+
+
+const DetailsScreen = (props) => {
   
-  const place = route.params;
+  const _toggleFavorite = () => {
+    const action = {type: TOGGLE_FAVORITE, payload:place};
+    props.dispatch(action);
+  }
+const displayFavorite = () => {
+    let sourceImage = require('../../assets/non_ic_favorite_border.png'); 
+    let  shouldEnlarge = false;
+    if(props.favoritePlace.findIndex((item)=> item.id === place.id) !== -1 ){
+        sourceImage = require('../../assets/image_ic_favorite.png');
+      shouldEnlarge = true
+    }
+    return(
+      <EnlargeShink shouldEnlarge={shouldEnlarge} >
+        <Image source={sourceImage} style={styles.favorite_ic}/>
+      </EnlargeShink>
+    );
+  }
+  
+
+  const place = props.route.params;
+  const navigation = props.navigation;
+
+  console.log(props.favoritePlace);
 
   return (
     <View style={{flex:1, backgroundColor:COLORS.white}} >
@@ -69,7 +95,7 @@ const DetailsScreen = ({ navigation, route }) => {
         <View style={styles.header} >
           <Icon
             name='arrow-back-ios'
-            size={28}
+            size={20}
             color={COLORS.white}
             onPress={navigation.goBack}
           />
@@ -92,9 +118,15 @@ const DetailsScreen = ({ navigation, route }) => {
         </View>
       </ImageBackground>
       <View style={styles.detailsContainer} >
-        <View style={styles.iconContainer} >
-          <Icon name='favorite'  size={30} color={COLORS.red} />
-        </View>
+        <TouchableOpacity 
+          style={styles.iconContainer}
+          activeOpacity={0.5}
+          onPress={()=>{
+            _toggleFavorite();
+          }}
+           >
+          {displayFavorite}
+        </TouchableOpacity>
         {SharePlace({place})}
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Icon name='place' size={28} color={COLORS.primary} />
@@ -125,7 +157,7 @@ const DetailsScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 6,
+    marginTop: 22,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal:20
@@ -201,9 +233,19 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
   },
+  favorite_ic:{
+    
+    width:30,
+    height:30
+  }
 });
 
+const mapStateToProps = (state) => {
+  return {
+    favoritePlace:state.favoritePlace
+  };
+}
 
 
 
-export default DetailsScreen;
+export default connect(mapStateToProps)(DetailsScreen);

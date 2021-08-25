@@ -8,6 +8,8 @@ import {
 } from '@react-navigation/native'
 
 import { AppearanceProvider, useColorScheme} from 'react-native-appearance';
+import store from "./src/store/store";
+import { Provider } from 'react-redux';
 
 
 export default function App() {
@@ -15,12 +17,13 @@ export default function App() {
   const scheme = useColorScheme();
 
   return (
-      <AppearanceProvider>
-        <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme} >
-           <MainStack/>
-        </NavigationContainer>
-      </AppearanceProvider>
-      
+    <Provider store={store} > 
+        <AppearanceProvider>
+          <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme} >
+            <MainStack/>
+          </NavigationContainer>
+        </AppearanceProvider>
+      </Provider>
   );
 }
 

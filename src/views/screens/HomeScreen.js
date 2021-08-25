@@ -60,7 +60,7 @@ function HomeScreen ({navigation}) {
               </Text>
               <View style={styles.inputContainer}>
                 <Icon name='search' size={28} />
-                <TextInput placeholder="rechercher l'endroit" style={COLORS.grey} />
+                <TextInput  placeholder="rechercher l'endroit" style={COLORS.grey} />
               </View>
             </View>
           </View>
