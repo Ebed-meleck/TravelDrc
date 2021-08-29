@@ -1,31 +1,40 @@
 import * as React from 'react';
 import {Animated} from 'react-native';
 
-function EnlargeShink (props){
+class EnlargeShink extends React.Component {
 
- const viewSize = React.useRef(new Animated.Value(getSize()));
+  constructor(props){
+    super(props);
+    this.state = {
+      viewSize :  new Animated.Value(this.getSize())
+    };
+  }
 
- function getSize (){
+ //const viewSize = React.useRef(new Animated.Value(getSize()));
+
+  getSize (){
    if(props.shouldEnlarge){
      return 80;
    }
    return 40;
  }
 
- React.useEffect(()=>{
-   Animated.spring(viewSize,{
-     toValue:getSize(),
+ componentDidUpdate(){
+   Animated.spring(this.state.viewSize,{
+     toValue:this.getSize(),
      useNativeDriver:false,
    }).start();
- });
+ }
+  render(){ 
 
+  
  return(
    <Animated.View
-    style={{ width:viewSize, height:viewSize}}
+    style={{ width:this.state.viewSize, height:this.state.viewSize}}
     >
-      {props.children}
+      {this.props.children}
    </Animated.View>
  );
-
+  }
 }
 export default EnlargeShink;
