@@ -13,8 +13,8 @@ class EnlargeShink extends React.Component {
  //const viewSize = React.useRef(new Animated.Value(getSize()));
 
   getSize (){
-   if(props.shouldEnlarge){
-     return 80;
+   if(this.props.shouldEnlarge){
+     return 40;
    }
    return 40;
  }
@@ -26,15 +26,13 @@ class EnlargeShink extends React.Component {
    }).start();
  }
   render(){ 
-
-  
- return(
-   <Animated.View
-    style={{ width:this.state.viewSize, height:this.state.viewSize}}
-    >
-      {this.props.children}
-   </Animated.View>
- );
+    return(
+      <Animated.View
+        style={{ width:this.state.viewSize, height:this.state.viewSize}}
+        >
+          {this.props.children}
+      </Animated.View>
+    );
   }
 }
 export default EnlargeShink;

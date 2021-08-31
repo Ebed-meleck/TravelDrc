@@ -44,7 +44,7 @@ const DrawerContent = (props) => {
             <Drawer.Item
               icon='star-outline'
               label='Mes favoris'
-              onPress={()=>{ alert('Dans le prochain jour sa sera disponible')}}
+              onPress={()=>{ props.navigation.navigate('FavorisList')}}
             />
             <Drawer.Item
               icon='bookmark-multiple-outline'

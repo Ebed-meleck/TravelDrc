@@ -19,6 +19,7 @@ import { _actionFavorite } from '../../store/action/favorite.action';
 import EnlargeShink from '../../Animation/EnlargeShink';
 import { TOGGLE_FAVORITE } from '../../store/types/types';
 
+
 const SharePlace = ({ place }) => {
       
     const _sharePlace = () => {
@@ -54,35 +55,44 @@ const SharePlace = ({ place }) => {
       }
 }
 
+  function DisplayFavorite({place, favoritePlace}) {
+    let sourceImage = require('../../assets/non_ic_favorite_border.png'); 
+    let  shouldEnlarge = false;
+    if(favoritePlace.findIndex((item)=> item.id === place.id) !== -1 ){
+        sourceImage = require('../../assets/image_ic_favorite.png');
+        shouldEnlarge = true
+    }
+
+    return (
+      <EnlargeShink shouldEnlarge={shouldEnlarge} >
+        <Image source={sourceImage} style={styles.favorite_ic}/>
+        </EnlargeShink>
+    );
+   
+  }
 
 
 
-
-const DetailsScreen = (props) => {
+function DetailsScreen(props)  {
   
   const _toggleFavorite = () => {
     const action = {type: TOGGLE_FAVORITE, payload:place};
     props.dispatch(action);
   }
-const displayFavorite = () => {
-    let sourceImage = require('../../assets/non_ic_favorite_border.png'); 
-    let  shouldEnlarge = false;
-    if(props.favoritePlace.findIndex((item)=> item.id === place.id) !== -1 ){
-        sourceImage = require('../../assets/image_ic_favorite.png');
-      shouldEnlarge = true
-    }
-    return(
-      <EnlargeShink shouldEnlarge={shouldEnlarge} >
-        <Image source={sourceImage} style={styles.favorite_ic}/>
+
+  function _displayF(){
+    return (
+      <EnlargeShink shouldEnlarge={true}>
+        <Image source={require('../../assets/non_ic_favorite_border.png')}  style={styles.favorite_ic}/>
       </EnlargeShink>
-    );
+    )
   }
   
 
   const place = props.route.params;
   const navigation = props.navigation;
 
-  console.log(props.favoritePlace);
+ // console.log(props.favoritePlace);
 
   return (
     <View style={{flex:1, backgroundColor:COLORS.white}} >
@@ -125,7 +135,7 @@ const displayFavorite = () => {
             _toggleFavorite();
           }}
            >
-          {displayFavorite}
+            {DisplayFavorite({place, favoritePlace:props.favoritePlace})}
         </TouchableOpacity>
         {SharePlace({place})}
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
@@ -234,9 +244,8 @@ const styles = StyleSheet.create({
     height: 30,
   },
   favorite_ic:{
-    
-    width:30,
-    height:30
+    width:40,
+    height:40
   }
 });
 

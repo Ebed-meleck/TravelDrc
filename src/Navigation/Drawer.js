@@ -17,7 +17,8 @@ const HomeStack = () => {
       screenOptions={{ headerShown: false }}
     >
      <Stack.Screen name='home' component={HomeScreen} />
-      <Stack.Screen name='DetailsScreen' component={DetailsScreen} />
+     <Stack.Screen name='DetailsScreen' component={DetailsScreen} />
+     <Stack.Screen name='FavorisList' component={FavorisList}/>
     </Stack.Navigator>
 
   );

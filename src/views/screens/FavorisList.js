@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { View, StyleSheet, Text } from 'react-native'
 import Header from '../../components/Header';
+import FavoriItem from '../../components/FavoriItem';
 
-const FavorisList = () => {
+const FavorisList = (props) => {
   return (
-  <View>
-      <Header/>
-      <Text>
-        hello favoris
-      </Text>
+  <View style={{flex:1}}>
+    <Header navigation={props.navigation}/>
+     <FavoriItem {...props}/>
     </View>
  );
 };

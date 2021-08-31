@@ -29,22 +29,13 @@ const { width } = Dimensions.get('screen');
  
 function HomeScreen ({navigation}) {
   
-    const getItemCount = (data) => 6;
+  
    
 
     return (
       <View style={{ flex: 1, backgroundColor: COLORS.white }}  >
         <StatusBar translucent={false} backgroundColor={COLORS.primary} />
-        <Header />
-        <View style={styles.header}>
-          <TouchableHighlight activeOpacity={0.5}
-            onPress={() => navigation.openDrawer()}
-          >
-            <Icon name="sort" size={28} color={COLORS.white}
-            />
-          </TouchableHighlight>
-          
-        </View>
+        <Header navigation={navigation} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           bounces={true}
