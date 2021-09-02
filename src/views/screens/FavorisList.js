@@ -6,7 +6,7 @@ import FavoriItem from '../../components/FavoriItem';
 const FavorisList = (props) => {
   return (
   <View style={{flex:1}}>
-    <Header navigation={props.navigation}/>
+    <Header navigation={props.navigation} title="Favoris" />
      <FavoriItem {...props}/>
     </View>
  );

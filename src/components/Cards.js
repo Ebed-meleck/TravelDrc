@@ -20,6 +20,7 @@ class Cards extends React.Component {
     const place = this.props.place;
     const navigation = this.props.navigation;
 
+
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('DetailsScreen', place)}  >
         <ImageBackground style={styles.cardImage}
@@ -38,7 +39,6 @@ class Cards extends React.Component {
           </View>
         </ImageBackground>
       </TouchableOpacity>
- 
     );
   }
 }

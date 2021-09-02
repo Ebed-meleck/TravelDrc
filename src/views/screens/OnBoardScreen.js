@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import COLORS from '../../consts/colors';
 
-const OnBoardScreen = ({ navigation }) => {
+function OnBoardScreen ({ navigation })  {
   return (
     <View style={styles.container}>
       <StatusBar translucent  backgroundColor='rgba(0,0,0,0.2)' />
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   },
    btn_text: {
      fontWeight:'bold'
-   
   }
 });
 

@@ -21,9 +21,20 @@ function FavoriItem(props) {
     return (<CardFavorite key={index} item={item}/>);
   })
 
+  const noData = () =>{
+    if(isFavorite.length === 0){
+      return(
+        <View>
+          <Text>No data add to favorite </Text>
+        </View>
+      );
+    }
+  }
+
   return (
     <ScrollView>
       {renderFavorite}
+      {noData}
     </ScrollView>
   )
 }

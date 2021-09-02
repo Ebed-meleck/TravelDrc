@@ -80,13 +80,6 @@ function DetailsScreen(props)  {
     props.dispatch(action);
   }
 
-  function _displayF(){
-    return (
-      <EnlargeShink shouldEnlarge={true}>
-        <Image source={require('../../assets/non_ic_favorite_border.png')}  style={styles.favorite_ic}/>
-      </EnlargeShink>
-    )
-  }
   
 
   const place = props.route.params;
@@ -97,7 +90,6 @@ function DetailsScreen(props)  {
   return (
     <View style={{flex:1, backgroundColor:COLORS.white}} >
       <StatusBar translucent backgroundColor='rgba(0,0,0,0.2)' />
-      <Header />
       <ImageBackground
         style={{ flex: 0.7 }}
         source={place.image}
