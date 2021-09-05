@@ -41,11 +41,12 @@ const DrawerContent = (props) => {
               onPress={()=>{ props.navigation.navigate('home') }}
             />
 
+            {/*  
             <Drawer.Item
               icon='star-outline'
               label='Mes favoris'
               onPress={()=>{ props.navigation.navigate('FavorisList')}}
-            />
+            />*/}
             <Drawer.Item
               icon='bookmark-multiple-outline'
               label='Enregistrement'

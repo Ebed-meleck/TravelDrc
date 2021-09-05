@@ -80,6 +80,7 @@ function DetailsScreen(props)  {
     props.dispatch(action);
   }
 
+
   
 
   const place = props.route.params;

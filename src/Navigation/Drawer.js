@@ -30,7 +30,7 @@ const MainDrawer = () => {
         initialRouteName='home'
         drawerContent={props=> <DrawerContent {...props} />}>
         <Drawer.Screen name='home' component={HomeStack} />
-        <Drawer.Screen name='favoris' component={FavorisList} />
+        {/*<Drawer.Screen name='favoris' component={FavorisList} /> */}
       </Drawer.Navigator>  
   );
 }
