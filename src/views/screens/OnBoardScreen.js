@@ -28,7 +28,7 @@ function OnBoardScreen ({ navigation })  {
           onPress={() => navigation.navigate('start')}
         >
           <View style={styles.btn}>
-            <Text style={styles.btn_text} >Get started</Text>
+            <Text style={styles.btn_text} >Commencer</Text>
           </View>
         </TouchableOpacity>
       </View>

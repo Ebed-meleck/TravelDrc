@@ -43,7 +43,7 @@ function PlaceItem({navigation}) {
               renderItem={({ item }) => <Cards place={item} navigation={navigation} />}
           
             />
-            <Text style={styles.sectionTitle} >Recommended</Text>
+            <Text style={styles.sectionTitle} >Recommender</Text>
             <FlatList
               snapToInterval={20}
               contentContainerStyle={{ paddingLeft: 20, paddingBottom: 20 }}
